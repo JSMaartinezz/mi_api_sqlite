@@ -1,0 +1,99 @@
+### AL HABER HECHO PRUEBAS POR MI CUENTA, ES POSIBLE QUE LAS CANCIONES CON ID DEL 1 AL 3 NO EXISTAN.
+
+GET http://localhost:3000/songs
+Accept: application/json
+
+ 1)
+
+### 1
+POST http://localhost:3000/songs
+Content-Type: application/json
+
+{
+  "title": "Enter Sandman",
+  "artist": "Metallica",
+  "year": "1991",
+  "genre": "Heavy Metal"
+}
+### 2
+POST http://localhost:3000/songs
+Content-Type: application/json
+
+{ 
+  "title": "Black Hole Sun", 
+  "artist": "Soundgarden", 
+  "year": "1994", 
+  "genre": "Grunge" 
+}
+
+### 3
+POST http://localhost:3000/songs
+Content-Type: application/json
+
+{ 
+  "title": "Waterfalls", 
+  "artist": "TLC", 
+  "year": "1995", 
+  "genre": "R&B" 
+}
+
+### 4
+POST http://localhost:3000/songs
+Content-Type: application/json
+
+{ 
+  "title": "Don't Speak", 
+  "artist": "No Doubt", 
+  "year": "1996", 
+  "genre": "Ska-Pop" 
+}
+
+### 5
+POST http://localhost:3000/songs
+Content-Type: application/json
+
+{ 
+  "title": "Torn", 
+  "artist": "Natalie Imbruglia", 
+  "year": "1997", 
+  "genre": "Pop" 
+}
+
+###
+# 3) GET /songs/:id
+# Recupera la cancion recién creada.
+
+GET http://localhost:3000/songs/5
+Accept: application/json
+
+###
+# 4) PUT /songs/:id
+### Actualizar una canción por ID
+### A veces puede dar error 500, pero los datos se actualizan.
+PUT http://localhost:3000/songs/4
+Content-Type: application/json
+
+{
+  "title": "cambio",
+  "artist": "testing",
+  "year": "1994",
+  "genre": "cambio de prueba"
+}
+
+###
+# 5) DELETE /songs/:id
+# Borra la cancion usando transacción y log.
+
+DELETE http://localhost:3000/songs/4
+Accept: application/json
+
+###
+# 6) GET /song/:id (cancion ya borrada)
+# Intenta recuperar una cancion eliminada.
+# Resultado esperado:
+# - 404 Not Found
+# - ok: false
+# - error: "cancion no encontrada."
+
+GET http://localhost:3000/songs/3
+Accept: application/json
